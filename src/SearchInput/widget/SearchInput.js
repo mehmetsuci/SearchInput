@@ -184,6 +184,6 @@ define([
 	});
 });
 
-require(["InputPackage/widget/SearchInput"], function() {
+require(["SearchInput/widget/SearchInput"], function() {
 	"use strict";
 });
