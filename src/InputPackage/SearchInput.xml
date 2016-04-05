@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<widget id="InputPackage.widget.SearchInput" needsEntityContext="true" xmlns="http://www.mendix.com/widget/1.0/">
+<widget id="SearchInput.widget.SearchInput" needsEntityContext="true" xmlns="http://www.mendix.com/widget/1.0/">
 	<name>SearchInput</name>
 	<description>An input box with an integrated search button.</description>
 	<icon />

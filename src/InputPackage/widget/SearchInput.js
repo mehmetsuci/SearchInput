@@ -10,11 +10,11 @@ define([
 	"dojo/_base/lang",
 	"dojo/keys",
 	"dojo/html",
-	"dojo/text!InputPackage/widget/template/SearchInput.html"
+	"dojo/text!SearchInput/widget/template/SearchInput.html"
 ], function(declare, _WidgetBase, _TemplatedMixin, dom, dojoDom, dojoStyle, dojoConstruct, dojoArray, dojoLang, dojoKeys, dojoHtml, widgetTemplate) {
 	"use strict";
 
-	return declare("InputPackage.widget.SearchInput", [_WidgetBase, _TemplatedMixin], {
+	return declare("SearchInput.widget.SearchInput", [_WidgetBase, _TemplatedMixin], {
 		templateString: widgetTemplate,
 
 		searchSelectNode: null,
