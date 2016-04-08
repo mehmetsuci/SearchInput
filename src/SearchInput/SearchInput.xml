@@ -23,6 +23,20 @@
 			<category>General</category>
 			<description>Placeholder for when the inputbox is empty</description>
 		</property>
+        <property key="buttonstyle" type="enumeration" required="true" defaultValue="default">
+			<caption>Button style</caption>
+			<category>general</category>
+			<description>Placeholder for when the inputbox is empty</description>
+            <enumerationValues>
+				<enumerationValue key="default">Default</enumerationValue>
+				<enumerationValue key="inverse">Inverse</enumerationValue>
+				<enumerationValue key="primary">Primary</enumerationValue>
+				<enumerationValue key="info">Info</enumerationValue>
+				<enumerationValue key="success">Success</enumerationValue>
+				<enumerationValue key="warning">Warning</enumerationValue>
+				<enumerationValue key="danger">Danger</enumerationValue>
+			</enumerationValues>
+		</property>
 	</properties>
 </widget>
 

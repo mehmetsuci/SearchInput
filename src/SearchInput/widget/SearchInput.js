@@ -54,7 +54,7 @@ define([
 
 		_setupEvents: function() {
 
-			this.connect(this.searchInputNode, "onkeydown", dojoLang.hitch(this, this.onKeyUp));
+			this.connect(this.searchInputNode, "onkeyup", dojoLang.hitch(this, this.onKeyUp));
 			this.connect(this.searchSelectNode, "onclick", dojoLang.hitch(this, function(e) {
 				this.executeMicroflow(this.mfToExecute);
 			}));
@@ -80,8 +80,8 @@ define([
 		},
 
 		onKeyUp: function(event) {
-			this._contextObj.set(this.targetAttribute, this.searchInputNode.value);
 			if (event.keyCode == dojoKeys.ENTER) {
+				this._contextObj.set(this.targetAttribute, this.searchInputNode.value);
 				event.preventDefault();
 				if (this.mfToExecute !== "") {
 					this.executeMicroflow(this.mfToExecute);
@@ -91,8 +91,8 @@ define([
 
 
 		executeMicroflow: function(mf) {
+			this._contextObj.set(this.targetAttribute, this.searchInputNode.value);
 			if (mf && this._contextObj) {
-
 				mx.data.action({
 					store: {
 						caller: this.mxform
