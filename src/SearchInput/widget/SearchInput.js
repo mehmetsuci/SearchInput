@@ -54,7 +54,7 @@ define([
 
 		_setupEvents: function() {
 
-			this.connect(this.searchInputNode, "onkeyup", dojoLang.hitch(this, this.onKeyUp));
+			this.connect(this.searchInputNode, "onkeydown", dojoLang.hitch(this, this.onKeyDown));
 			this.connect(this.searchSelectNode, "onclick", dojoLang.hitch(this, function(e) {
 				this.executeMicroflow(this.mfToExecute);
 			}));
@@ -79,7 +79,7 @@ define([
 			mendix.lang.nullExec(callback);
 		},
 
-		onKeyUp: function(event) {
+		onKeyDown: function(event) {
 			if (event.keyCode == dojoKeys.ENTER) {
 				this._contextObj.set(this.targetAttribute, this.searchInputNode.value);
 				event.preventDefault();
