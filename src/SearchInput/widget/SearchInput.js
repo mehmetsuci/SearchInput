@@ -18,6 +18,7 @@ define([
 	return declare("SearchInput.widget.SearchInput", [_WidgetBase, _TemplatedMixin], {
 		templateString: widgetTemplate,
 
+    searchFormNode: null,
 		searchSelectNode: null,
 		searchInputNode: null,
 		infoTextNode: null,
@@ -55,6 +56,7 @@ define([
 		_setupEvents: function() {
 
 			this.connect(this.searchInputNode, "onkeydown", dojoLang.hitch(this, this.onKeyDown));
+			this.connect(this.searchFormNode, "submit", dojoLang.hitch(this, this.onSubmit));
 			this.connect(this.searchSelectNode, "onclick", dojoLang.hitch(this, function(e) {
 				this.executeMicroflow(this.mfToExecute);
 			}));
@@ -78,6 +80,11 @@ define([
 
 			mendix.lang.nullExec(callback);
 		},
+
+    onSubmit: function (e) {
+      e.preventDefault();
+      return false;
+    },
 
 		onKeyDown: function(event) {
 			if (event.keyCode == dojoKeys.ENTER) {
@@ -156,7 +163,7 @@ define([
 				this._handles = [];
 			}
 
-			// When a mendix object exists create subscribtions. 
+			// When a mendix object exists create subscribtions.
 			if (this._contextObj) {
 				var objectHandle = this.subscribe({
 					guid: this._contextObj.getGuid(),
