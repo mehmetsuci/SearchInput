@@ -194,6 +194,4 @@ define([
     });
 });
 
-require(["SearchInput/widget/SearchInput"], function() {
-    "use strict";
-});
+require(["SearchInput/widget/SearchInput"]);

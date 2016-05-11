@@ -1,42 +1,41 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <widget id="SearchInput.widget.SearchInput" needsEntityContext="true" xmlns="http://www.mendix.com/widget/1.0/">
-	<name>SearchInput</name>
-	<description>An input box with an integrated search button.</description>
-	<icon />
-	<properties>
-		<property key="targetAttribute" type="attribute">
-			<caption>Attribute</caption>
-			<category>Appearance</category>
-			<description></description>
-			<attributeTypes>
-				<attributeType name="String" />
-			</attributeTypes>
-		</property>
-		<property key="mfToExecute" type="microflow" required="true" defaultValue="">
-			<caption>Microflow</caption>
-			<category>Settings</category>
-			<description>The microflow to invoke after hitting the enter key.</description>
-			<returnType type="Void"/>
-		</property>
-		<property key="placeholder" type="string" required="false">
-			<caption>Placeholder text</caption>
-			<category>General</category>
-			<description>Placeholder for when the inputbox is empty</description>
-		</property>
-        <property key="buttonstyle" type="enumeration" required="true" defaultValue="default">
-			<caption>Button style</caption>
-			<category>general</category>
-			<description>Placeholder for when the inputbox is empty</description>
-            <enumerationValues>
-				<enumerationValue key="default">Default</enumerationValue>
-				<enumerationValue key="inverse">Inverse</enumerationValue>
-				<enumerationValue key="primary">Primary</enumerationValue>
-				<enumerationValue key="info">Info</enumerationValue>
-				<enumerationValue key="success">Success</enumerationValue>
-				<enumerationValue key="warning">Warning</enumerationValue>
-				<enumerationValue key="danger">Danger</enumerationValue>
-			</enumerationValues>
-		</property>
-	</properties>
+  <name>SearchInput</name>
+  <description>An input box with an integrated search button.</description>
+  <icon />
+  <properties>
+    <property key="targetAttribute" type="attribute">
+      <caption>Attribute</caption>
+      <category>Appearance</category>
+      <description></description>
+      <attributeTypes>
+        <attributeType name="String" />
+      </attributeTypes>
+    </property>
+    <property key="mfToExecute" type="microflow" required="true" defaultValue="">
+      <caption>Microflow</caption>
+      <category>Settings</category>
+      <description>The microflow to invoke after hitting the enter key.</description>
+      <returnType type="Void"/>
+    </property>
+    <property key="placeholder" type="string" required="false">
+      <caption>Placeholder text</caption>
+      <category>General</category>
+      <description>Placeholder for when the inputbox is empty</description>
+    </property>
+    <property key="buttonstyle" type="enumeration" required="true" defaultValue="default">
+      <caption>Button style</caption>
+      <category>General</category>
+      <description>Button color</description>
+      <enumerationValues>
+        <enumerationValue key="default">Default</enumerationValue>
+        <enumerationValue key="inverse">Inverse</enumerationValue>
+        <enumerationValue key="primary">Primary</enumerationValue>
+        <enumerationValue key="info">Info</enumerationValue>
+        <enumerationValue key="success">Success</enumerationValue>
+        <enumerationValue key="warning">Warning</enumerationValue>
+        <enumerationValue key="danger">Danger</enumerationValue>
+      </enumerationValues>
+    </property>
+  </properties>
 </widget>
-
