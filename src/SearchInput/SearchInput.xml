@@ -23,10 +23,15 @@
       <category>General</category>
       <description>Placeholder for when the inputbox is empty</description>
     </property>
+    <property key="buttonIconClass" type="string" required="true" defaultValue="search">
+      <caption>Button icon</caption>
+      <category>General</category>
+      <description>Glyphicon that is used in the button. This has the value "glyphicon glyphicon-" + this value. See http://getbootstrap.com/components/#glyphicons</description>
+    </property>
     <property key="buttonstyle" type="enumeration" required="true" defaultValue="default">
       <caption>Button style</caption>
       <category>General</category>
-      <description>Button color</description>
+      <description>Button color using a Bootstrap class</description>
       <enumerationValues>
         <enumerationValue key="default">Default</enumerationValue>
         <enumerationValue key="inverse">Inverse</enumerationValue>
