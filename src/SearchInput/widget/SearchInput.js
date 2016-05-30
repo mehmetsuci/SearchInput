@@ -97,6 +97,7 @@ define([
         executeMicroflow: function(mf) {
             logger.debug(this.id + ".executeMicroFlow");
             if (mf && this._contextObj) {
+                this._clearValidations();
                 this._contextObj.set(this.targetAttribute, this.searchInputNode.value);
                 mx.data.action({
                     store: {
@@ -147,7 +148,7 @@ define([
                 "class": "alert alert-danger",
                 "innerHTML": message
             });
-            dojoConstruct.place(this.domNode, this._alertDiv);
+            dojoConstruct.place(this._alertDiv, this.domNode);
         },
 
         _addValidation: function(message) {
