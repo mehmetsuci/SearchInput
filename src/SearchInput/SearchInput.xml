@@ -18,7 +18,7 @@
       <description>The microflow to invoke after hitting the enter key.</description>
       <returnType type="Void"/>
     </property>
-    <property key="placeholder" type="string" required="false">
+    <property key="placeholder" type="translatableString" required="false">
       <caption>Placeholder text</caption>
       <category>General</category>
       <description>Placeholder for when the inputbox is empty</description>
