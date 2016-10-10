@@ -26,6 +26,7 @@ define([
         _handles: null,
         _contextObj: null,
         _alertDiv: null,
+		_hadValidationFeedback: false,
 
         postCreate: function() {
             logger.debug(this.id + ".postCreate");
@@ -121,7 +122,6 @@ define([
         },
 
         _handleValidation: function(validations) {
-            logger.debug(this.id + "._handleValidation");
             this._clearValidations();
 
             var validation = validations[0],
@@ -131,18 +131,25 @@ define([
                 validation.removeAttribute(this.targetAttribute);
             } else if (message) {
                 this._addValidation(message);
+
+				if(!this._hadValidationFeedback) {
+					this._hadValidationFeedback = true;
+					this._increaseValidationNotification();
+				}
                 validation.removeAttribute(this.targetAttribute);
             }
+			if(this._hadValidationFeedback && !message) {
+				this._decreaseValidationNotification();
+				this._hadValidationFeedback = false;
+			}
         },
 
         _clearValidations: function() {
-            logger.debug(this.id + "._clearValidations");
             dojoConstruct.destroy(this._alertDiv);
             this._alertDiv = null;
         },
 
         _showError: function(message) {
-            logger.debug(this.id + "._showError");
             if (this._alertDiv !== null) {
                 dojoHtml.set(this._alertDiv, message);
                 return true;
@@ -155,7 +162,6 @@ define([
         },
 
         _addValidation: function(message) {
-            logger.debug(this.id + "._addValidation");
             this._showError(message);
         },
 
@@ -194,7 +200,22 @@ define([
 
                 this._handles = [objectHandle, attrHandle, validationHandle];
             }
-        }
+        },
+		_increaseValidationNotification : function() {
+			//increase notifications in case the widget is inside tab
+			//Warning: This is not documented in official API. 
+			if (this.validator) {
+				this.validator.addNotification();
+				
+			}
+		},
+		_decreaseValidationNotification : function() {
+			//decrease notifications in case the widget is inside tab
+			//Warning: This is not documented in official API. 
+			if (this.validator) {
+				this.validator.removeNotification();
+			}
+		}
     });
 });
 
