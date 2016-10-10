@@ -53,10 +53,10 @@ define([
             logger.debug(this.id + "._setupEvents");
             this.connect(this.searchInputNode, "onkeydown", dojoLang.hitch(this, this.onKeyDown));
             this.connect(this.searchFormNode, "submit", dojoLang.hitch(this, this.onSubmit));
+			this.connect(this.searchFormNode, "change", dojoLang.hitch(this, this.onChange));
             this.connect(this.searchSelectNode, "onclick", dojoLang.hitch(this, function(e) {
                 this.executeMicroflow(this.mfToExecute);
             }));
-
         },
 
         _updateRendering: function(callback) {
@@ -79,10 +79,13 @@ define([
         },
 
         onSubmit: function (e) {
-            logger.debug(this.id + ".onSubmit");
             e.preventDefault();
             return false;
         },
+		
+		onChange: function (e) {
+			this._contextObj.set(this.targetAttribute, this.searchInputNode.value);
+		},
 
         onKeyDown: function(event) {
             if (event.keyCode === dojoKeys.ENTER) {
