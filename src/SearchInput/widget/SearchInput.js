@@ -83,7 +83,7 @@ define([
             e.preventDefault();
             return false;
         },
-		
+
 		onChange: function (e) {
 			this._contextObj.set(this.targetAttribute, this.searchInputNode.value);
 		},
@@ -203,15 +203,15 @@ define([
         },
 		_increaseValidationNotification : function() {
 			//increase notifications in case the widget is inside tab
-			//Warning: This is not documented in official API. 
+			//Warning: This is not documented in official API and might break when the API changes. 
 			if (this.validator) {
 				this.validator.addNotification();
-				
+
 			}
 		},
 		_decreaseValidationNotification : function() {
 			//decrease notifications in case the widget is inside tab
-			//Warning: This is not documented in official API. 
+			//Warning: This is not documented in official API and might break when the API changes. 
 			if (this.validator) {
 				this.validator.removeNotification();
 			}
