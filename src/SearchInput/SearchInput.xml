@@ -42,5 +42,20 @@
         <enumerationValue key="danger">Danger</enumerationValue>
       </enumerationValues>
     </property>
+    <property key="showProgressBar" type="boolean" required="true" defaultValue="false">
+      <caption>Show Progress Bar</caption>
+      <category>Settings</category>
+      <description></description>
+    </property>
+    <property key="isModal" type="boolean" required="true" defaultValue="false">
+      <caption>Blocking progress bar</caption>
+      <category>Settings</category>
+      <description>Used when progress bar is set to appear</description>
+    </property>
+    <property key="progressBarMessage" type="string" required="false" defaultValue="Working...">
+      <caption>Progress Bar Message</caption>
+      <category>Settings</category>
+      <description>Used when progress bar is set to appear</description>
+    </property>
   </properties>
 </widget>

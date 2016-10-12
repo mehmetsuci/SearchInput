@@ -102,6 +102,9 @@ define([
             logger.debug(this.id + ".executeMicroFlow");
             if (mf && this._contextObj) {
                 this._clearValidations();
+		if(progress) {
+                    var pid = mx.ui.showProgress(this.progressBarMessage, this.isModal);
+                }
                 this._contextObj.set(this.targetAttribute, this.searchInputNode.value);
                 mx.data.action({
                     store: {
@@ -113,9 +116,13 @@ define([
                         guids: [this._contextObj.getGuid()]
                     },
                     callback: function() {
+			if(progress) {
+                            mx.ui.hideProgress(pid);
+                        }
                     },
                     error: dojoLang.hitch(this, function() {
                         logger.error(this.id + ".executeMicroFlow: XAS error executing microflow");
+			mx.ui.hideProgress(pid);
                     })
                 });
             }
