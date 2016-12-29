@@ -86,6 +86,9 @@ define([
 
 		onChange: function (e) {
 			this._contextObj.set(this.targetAttribute, this.searchInputNode.value);
+			if (this.mfToExecuteOnChange !== "") {
+				this.executeMicroflow(this.mfToExecuteOnChange);
+			}
 		},
 
         onKeyDown: function(event) {
