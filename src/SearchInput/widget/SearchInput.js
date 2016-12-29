@@ -46,7 +46,7 @@ define([
                 this._resetSubscriptions();
                 this._updateRendering(callback);
             } else {
-                mendix.lang.nullExec(callback);
+                this._executeCallback(callback, "update");
             }
         },
 
@@ -76,7 +76,7 @@ define([
             // Important to clear all validations!
             this._clearValidations();
 
-            mendix.lang.nullExec(callback);
+            this._executeCallback(callback, "_updateRendering");
         },
 
         onSubmit: function(e) {
@@ -102,8 +102,9 @@ define([
             logger.debug(this.id + ".executeMicroFlow");
             if (mf && this._contextObj) {
                 this._clearValidations();
-                if (progress) {
-                    var pid = mx.ui.showProgress(this.progressBarMessage, this.isModal);
+                var pid = null;
+                if (this.showProgressBar) {
+                    pid = mx.ui.showProgress(this.progressBarMessage, this.isModal);
                 }
                 this._contextObj.set(this.targetAttribute, this.searchInputNode.value);
                 mx.data.action({
@@ -116,7 +117,7 @@ define([
                         guids: [this._contextObj.getGuid()]
                     },
                     callback: function() {
-                        if (progress) {
+                        if (pid !== null) {
                             mx.ui.hideProgress(pid);
                         }
                     },
@@ -177,7 +178,7 @@ define([
             // Release handles on previous object, if any.
             if (this._handles) {
                 dojoArray.forEach(this._handles, function(handle) {
-                    mx.data.unsubscribe(handle);
+                    this.unsubscribe(handle);
                 });
                 this._handles = [];
             }
@@ -214,7 +215,6 @@ define([
             //Warning: This is not documented in official API and might break when the API changes.
             if (this.validator) {
                 this.validator.addNotification();
-
             }
         },
 
@@ -223,6 +223,13 @@ define([
             //Warning: This is not documented in official API and might break when the API changes.
             if (this.validator) {
                 this.validator.removeNotification();
+            }
+        },
+
+        _executeCallback: function (cb, from) {
+            logger.debug(this.id + "._executeCallback" + (from ? " from " + from : ""));
+            if (cb && typeof cb === "function") {
+                cb();
             }
         }
     });
