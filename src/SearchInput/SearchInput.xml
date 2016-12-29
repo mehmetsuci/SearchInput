@@ -57,5 +57,11 @@
       <category>Settings</category>
       <description>Used when progress bar is set to appear</description>
     </property>
+    <property key="mfToExecuteOnChange" type="microflow" required="false" defaultValue="">
+      <caption>On Change Microflow</caption>
+      <category>Settings</category>
+      <description>The microflow to execute on change of the input value.</description>
+      <returnType type="Void"/>
+    </property>
   </properties>
 </widget>
