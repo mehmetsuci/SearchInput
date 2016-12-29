@@ -18,6 +18,12 @@
             <description>The microflow to invoke after hitting the enter key.</description>
             <returnType type="Void"/>
         </property>
+        <property key="mfToExecuteOnChange" type="microflow" required="false" defaultValue="">
+            <caption>On Change Microflow</caption>
+            <category>Settings</category>
+            <description>The microflow to execute on change of the input value.</description>
+            <returnType type="Void"/>
+        </property>
         <property key="placeholder" type="translatableString" required="false">
             <caption>Placeholder text</caption>
             <category>General</category>
