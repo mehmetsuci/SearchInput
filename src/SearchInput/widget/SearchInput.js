@@ -26,7 +26,7 @@ define([
         _handles: null,
         _contextObj: null,
         _alertDiv: null,
-		_hadValidationFeedback: false,
+        _hadValidationFeedback: false,
 
         postCreate: function() {
             logger.debug(this.id + ".postCreate");
@@ -54,7 +54,7 @@ define([
             logger.debug(this.id + "._setupEvents");
             this.connect(this.searchInputNode, "onkeydown", dojoLang.hitch(this, this.onKeyDown));
             this.connect(this.searchFormNode, "submit", dojoLang.hitch(this, this.onSubmit));
-			this.connect(this.searchFormNode, "change", dojoLang.hitch(this, this.onChange));
+            this.connect(this.searchFormNode, "change", dojoLang.hitch(this, this.onChange));
             this.connect(this.searchSelectNode, "onclick", dojoLang.hitch(this, function(e) {
                 this.executeMicroflow(this.mfToExecute);
             }));
@@ -79,14 +79,14 @@ define([
             mendix.lang.nullExec(callback);
         },
 
-        onSubmit: function (e) {
+        onSubmit: function(e) {
             e.preventDefault();
             return false;
         },
 
-		onChange: function (e) {
-			this._contextObj.set(this.targetAttribute, this.searchInputNode.value);
-		},
+        onChange: function(e) {
+            this._contextObj.set(this.targetAttribute, this.searchInputNode.value);
+        },
 
         onKeyDown: function(event) {
             if (event.keyCode === dojoKeys.ENTER) {
@@ -102,7 +102,7 @@ define([
             logger.debug(this.id + ".executeMicroFlow");
             if (mf && this._contextObj) {
                 this._clearValidations();
-		if(progress) {
+                if (progress) {
                     var pid = mx.ui.showProgress(this.progressBarMessage, this.isModal);
                 }
                 this._contextObj.set(this.targetAttribute, this.searchInputNode.value);
@@ -116,13 +116,13 @@ define([
                         guids: [this._contextObj.getGuid()]
                     },
                     callback: function() {
-			if(progress) {
+                        if (progress) {
                             mx.ui.hideProgress(pid);
                         }
                     },
                     error: dojoLang.hitch(this, function() {
                         logger.error(this.id + ".executeMicroFlow: XAS error executing microflow");
-			mx.ui.hideProgress(pid);
+                        mx.ui.hideProgress(pid);
                     })
                 });
             }
@@ -139,16 +139,16 @@ define([
             } else if (message) {
                 this._addValidation(message);
 
-				if(!this._hadValidationFeedback) {
-					this._hadValidationFeedback = true;
-					this._increaseValidationNotification();
-				}
+                if (!this._hadValidationFeedback) {
+                    this._hadValidationFeedback = true;
+                    this._increaseValidationNotification();
+                }
                 validation.removeAttribute(this.targetAttribute);
             }
-			if(this._hadValidationFeedback && !message) {
-				this._decreaseValidationNotification();
-				this._hadValidationFeedback = false;
-			}
+            if (this._hadValidationFeedback && !message) {
+                this._decreaseValidationNotification();
+                this._hadValidationFeedback = false;
+            }
         },
 
         _clearValidations: function() {
@@ -208,21 +208,23 @@ define([
                 this._handles = [objectHandle, attrHandle, validationHandle];
             }
         },
-		_increaseValidationNotification : function() {
-			//increase notifications in case the widget is inside tab
-			//Warning: This is not documented in official API and might break when the API changes. 
-			if (this.validator) {
-				this.validator.addNotification();
 
-			}
-		},
-		_decreaseValidationNotification : function() {
-			//decrease notifications in case the widget is inside tab
-			//Warning: This is not documented in official API and might break when the API changes. 
-			if (this.validator) {
-				this.validator.removeNotification();
-			}
-		}
+        _increaseValidationNotification: function() {
+            //increase notifications in case the widget is inside tab
+            //Warning: This is not documented in official API and might break when the API changes.
+            if (this.validator) {
+                this.validator.addNotification();
+
+            }
+        },
+
+        _decreaseValidationNotification: function() {
+            //decrease notifications in case the widget is inside tab
+            //Warning: This is not documented in official API and might break when the API changes.
+            if (this.validator) {
+                this.validator.removeNotification();
+            }
+        }
     });
 });
 
