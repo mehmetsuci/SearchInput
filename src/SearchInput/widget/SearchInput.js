@@ -178,24 +178,18 @@ define([
 
         _resetSubscriptions: function() {
             logger.debug(this.id + "._resetSubscriptions");
-            // Release handles on previous object, if any.
-            if (this._handles) {
-                dojoArray.forEach(this._handles, function(handle) {
-                    this.unsubscribe(handle);
-                });
-                this._handles = [];
-            }
+            this.unsubscribeAll();
 
             // When a mendix object exists create subscribtions.
             if (this._contextObj) {
-                var objectHandle = this.subscribe({
+                this.subscribe({
                     guid: this._contextObj.getGuid(),
                     callback: dojoLang.hitch(this, function(guid) {
                         this._updateRendering();
                     })
                 });
 
-                var attrHandle = this.subscribe({
+                this.subscribe({
                     guid: this._contextObj.getGuid(),
                     attr: this.backgroundColor,
                     callback: dojoLang.hitch(this, function(guid, attr, attrValue) {
@@ -203,13 +197,11 @@ define([
                     })
                 });
 
-                var validationHandle = this.subscribe({
+                this.subscribe({
                     guid: this._contextObj.getGuid(),
                     val: true,
                     callback: dojoLang.hitch(this, this._handleValidation)
                 });
-
-                this._handles = [objectHandle, attrHandle, validationHandle];
             }
         },
 
