@@ -110,12 +110,8 @@ define([
                     pid = mx.ui.showProgress(this.progressBarMessage, this.isModal);
                 }
                 this._contextObj.set(this.targetAttribute, this.searchInputNode.value);
-                mx.data.action({
-                    store: {
-                        caller: this.mxform
-                    },
+                mx.ui.action(mf, {
                     params: {
-                        actionname: mf,
                         applyto: "selection",
                         guids: [this._contextObj.getGuid()]
                     },
@@ -158,6 +154,10 @@ define([
         _clearValidations: function() {
             dojoConstruct.destroy(this._alertDiv);
             this._alertDiv = null;
+            if (this._hadValidationFeedback) {
+                this._decreaseValidationNotification();
+                this._hadValidationFeedback = false;
+            }
         },
 
         _showError: function(message) {
