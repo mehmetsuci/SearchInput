@@ -1,0 +1,24 @@
+image: node:10.13.0
+
+stages:
+  - install
+  - test
+
+install:
+  stage: install
+  script:
+    - npm run install
+  artifacts:
+    paths:
+      - node_modules/
+  only:
+    - master
+    - development
+
+test:
+  stage: test
+  script:
+    - npm run test
+  only:
+    - master
+    - development
