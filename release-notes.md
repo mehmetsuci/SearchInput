@@ -5,7 +5,7 @@
 - React version
 - Preview in Design Mode & Studio
 
-**Breaking change**: From version 2.0.0 the structure of the widget has changed. Therefore, updating the widget requires removing the old widget and placing the new one in the page.
+**Breaking change**: From version 2.0.0 the structure of the widget has changed and it requires Mendix 7.13.1 or higher.
 
 # v1.5.0
 

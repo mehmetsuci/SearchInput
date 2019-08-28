@@ -1,73 +1,69 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<widget
-  id="com.mendix.widget.custom.<%= NAME %>"
-  needsEntityContext="true"
-  xmlns="http://www.mendix.com/widget/1.0/"
->
-  <name><%= FRIENDLY_NAME %></name>
-  <description><%= WIDGET_DESC %></description>
-  <icon>
-    iVBORw0KGgoAAAANSUhEUgAAACQAAAAeCAYAAABE4bxTAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKzSURBVFhH7ZZZqE1RGICPeZ4yZ5Yp8/hClGQoSleeCQ9CeVE8iTwIL6SUN6UUT15IMkXGKEI8KEOUMSTzdH3fPnsf+6yz9z337Sbnq6+9zjp7t//1r7X+tQs1atT432gWXxP6Ys9is4yP+LDYrGBPfE04j0dxOs7FrphwDM8Um9mEAa3AumKzMBhH4S1sgVMwi/r4mmCA93EOGtBX/IHd8Rwa0G08ixWEAaXZgvNxDV5FR3wTs9iIO7EPvsTncdts+ew3HIDd0ME9wAvovf7fKI7jBmyJp3Ev5mFAZqp3rC+6h+MxpA2uQu/xHWU0j68hs3AkOopfeAjnxVZjLbbHJejUhJitU3gAW2M7LJEXkPNvKh+hIz+JA3EhVsNsdSg2c3mGd3Ay7rIjISsgMzMbb+AnO+ANHsGp0a+GaYuX8XP0K5vfaOa74Fg7ErICWoqj8SJ+sQN82N0xBJfbUQVfGO6+LFzgDqBEGJBzPwavoTcOizWQp9gZJ2E1hqOLtxovsGz7hwG5zX1hP9yK+1NuRnfOBOyFeViHDNx1lLdGx+ECfIyH7chjE97FmdGvSsyetWVl9Osv6W0v1iH7XI9hpkbgPnRaT9iRJj2CQeiqv45P7MjgFTqdBtYQDmobrsYZODGlZcFia1E2k05vJovxEjr6soWWohUuQ48A054QZkiu4Fu07iSL/Dt+wHfoDrbPBHTCiHSGrDPOqUF5/mThmWSx+4mL7ADXU8dis9ADk7ZFdChaAN/bAdYzz0o3yXo7wDXrSVAi6XiNPmgx9KwJy35/tN/p9PR3lAfRUabdjWncINYap8tA3MniV8A69BkTYPWO5lGtB+FBaxa8OcH/PdfS+P+0+Jrggs5bgyFm1y+MHejUVizypsCvgu3ooOrNTFPj9HuuuWEa/SlSo8Y/QqHwB3MQlKRb3U5KAAAAAElFTkSuQmCC
-  </icon>
-  <properties>
-    <property key="targetAttribute" type="attribute">
-      <caption>Attribute</caption>
-      <category>Settings</category>
-      <description>The microflow parameter name.</description>
-      <attributeTypes>
-          <attributeType name="String"/>
-      </attributeTypes>
-    </property>
-    <property key="mfToExecute" type="microflow" required="true" defaultValue="">
-        <caption>Microflow</caption>
-        <category>Settings</category>
-        <description>The microflow to invoke after hitting the enter key.</description>
-        <returnType type="Void"/>
-    </property>
-    <property key="mfToExecuteOnChange" type="microflow" required="false" defaultValue="">
-        <caption>On Change Microflow</caption>
-        <category>Settings</category>
-        <description>The microflow to execute on change of the input value.</description>
-        <returnType type="Void"/>
-    </property>
-    <property key="placeholder" type="translatableString" required="false">
-        <caption>Placeholder text</caption>
-        <category>General</category>
-        <description>Placeholder for when the inputbox is empty</description>
-    </property>
-    <property key="buttonIconClass" type="string" required="true" defaultValue="search">
-        <caption>Button icon</caption>
-        <category>General</category>
-        <description>Glyphicon that is used in the button. This has the value "glyphicon glyphicon-" + this value. See http://getbootstrap.com/components/#glyphicons</description>
-    </property>
-    <property key="buttonstyle" type="enumeration" required="true" defaultValue="default">
-        <caption>Button style</caption>
-        <category>General</category>
-        <description>Button color using a Bootstrap class</description>
-        <enumerationValues>
-            <enumerationValue key="default">Default</enumerationValue>
-            <enumerationValue key="inverse">Inverse</enumerationValue>
-            <enumerationValue key="primary">Primary</enumerationValue>
-            <enumerationValue key="info">Info</enumerationValue>
-            <enumerationValue key="success">Success</enumerationValue>
-            <enumerationValue key="warning">Warning</enumerationValue>
-            <enumerationValue key="danger">Danger</enumerationValue>
-        </enumerationValues>
-    </property>
-    <property key="showProgressBar" type="boolean" required="true" defaultValue="false">
-        <caption>Show Progress Bar</caption>
-        <category>Settings</category>
-        <description></description>
-    </property>
-    <property key="isModal" type="boolean" required="true" defaultValue="false">
-        <caption>Blocking progress bar</caption>
-        <category>Settings</category>
-        <description>Used when progress bar is set to appear</description>
-    </property>
-    <property key="progressBarMessage" type="string" required="false" defaultValue="Working...">
-        <caption>Progress Bar Message</caption>
-        <category>Settings</category>
-        <description>Used when progress bar is set to appear</description>
-    </property>
-  </properties>
+<widget id="<%= NAME %>.widget.<%= NAME %>" needsEntityContext="true" xmlns="http://www.mendix.com/widget/1.0/">
+    <name><%= FRIENDLY_NAME %></name>
+    <description><%= WIDGET_DESC %></description>
+    <icon>
+        iVBORw0KGgoAAAANSUhEUgAAACQAAAAeCAYAAABE4bxTAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKzSURBVFhH7ZZZqE1RGICPeZ4yZ5Yp8/hClGQoSleeCQ9CeVE8iTwIL6SUN6UUT15IMkXGKEI8KEOUMSTzdH3fPnsf+6yz9z337Sbnq6+9zjp7t//1r7X+tQs1atT432gWXxP6Ys9is4yP+LDYrGBPfE04j0dxOs7FrphwDM8Um9mEAa3AumKzMBhH4S1sgVMwi/r4mmCA93EOGtBX/IHd8Rwa0G08ixWEAaXZgvNxDV5FR3wTs9iIO7EPvsTncdts+ew3HIDd0ME9wAvovf7fKI7jBmyJp3Ev5mFAZqp3rC+6h+MxpA2uQu/xHWU0j68hs3AkOopfeAjnxVZjLbbHJejUhJitU3gAW2M7LJEXkPNvKh+hIz+JA3EhVsNsdSg2c3mGd3Ay7rIjISsgMzMbb+AnO+ANHsGp0a+GaYuX8XP0K5vfaOa74Fg7ErICWoqj8SJ+sQN82N0xBJfbUQVfGO6+LFzgDqBEGJBzPwavoTcOizWQp9gZJ2E1hqOLtxovsGz7hwG5zX1hP9yK+1NuRnfOBOyFeViHDNx1lLdGx+ECfIyH7chjE97FmdGvSsyetWVl9Osv6W0v1iH7XI9hpkbgPnRaT9iRJj2CQeiqv45P7MjgFTqdBtYQDmobrsYZODGlZcFia1E2k05vJovxEjr6soWWohUuQ48A054QZkiu4Fu07iSL/Dt+wHfoDrbPBHTCiHSGrDPOqUF5/mThmWSx+4mL7ADXU8dis9ADk7ZFdChaAN/bAdYzz0o3yXo7wDXrSVAi6XiNPmgx9KwJy35/tN/p9PR3lAfRUabdjWncINYap8tA3MniV8A69BkTYPWO5lGtB+FBaxa8OcH/PdfS+P+0+Jrggs5bgyFm1y+MHejUVizypsCvgu3ooOrNTFPj9HuuuWEa/SlSo8Y/QqHwB3MQlKRb3U5KAAAAAElFTkSuQmCC
+      </icon>
+    <properties>
+        <property key="targetAttribute" type="attribute">
+          <caption>Attribute</caption>
+          <category>Settings</category>
+          <description>The microflow parameter name.</description>
+          <attributeTypes>
+              <attributeType name="String"/>
+          </attributeTypes>
+        </property>
+        <property key="mfToExecute" type="microflow" required="true" defaultValue="">
+            <caption>Microflow</caption>
+            <category>Settings</category>
+            <description>The microflow to invoke after hitting the enter key.</description>
+            <returnType type="Void"/>
+        </property>
+        <property key="mfToExecuteOnChange" type="microflow" required="false" defaultValue="">
+            <caption>On Change Microflow</caption>
+            <category>Settings</category>
+            <description>The microflow to execute on change of the input value.</description>
+            <returnType type="Void"/>
+        </property>
+        <property key="placeholder" type="translatableString" required="false">
+            <caption>Placeholder text</caption>
+            <category>General</category>
+            <description>Placeholder for when the inputbox is empty</description>
+        </property>
+        <property key="buttonIconClass" type="string" required="true" defaultValue="search">
+            <caption>Button icon</caption>
+            <category>General</category>
+            <description>Glyphicon that is used in the button. This has the value "glyphicon glyphicon-" + this value. See http://getbootstrap.com/components/#glyphicons</description>
+        </property>
+        <property key="buttonstyle" type="enumeration" required="true" defaultValue="default">
+            <caption>Button style</caption>
+            <category>General</category>
+            <description>Button color using a Bootstrap class</description>
+            <enumerationValues>
+                <enumerationValue key="default">Default</enumerationValue>
+                <enumerationValue key="inverse">Inverse</enumerationValue>
+                <enumerationValue key="primary">Primary</enumerationValue>
+                <enumerationValue key="info">Info</enumerationValue>
+                <enumerationValue key="success">Success</enumerationValue>
+                <enumerationValue key="warning">Warning</enumerationValue>
+                <enumerationValue key="danger">Danger</enumerationValue>
+            </enumerationValues>
+        </property>
+        <property key="showProgressBar" type="boolean" required="true" defaultValue="false">
+            <caption>Show Progress Bar</caption>
+            <category>Settings</category>
+            <description></description>
+        </property>
+        <property key="isModal" type="boolean" required="true" defaultValue="false">
+            <caption>Blocking progress bar</caption>
+            <category>Settings</category>
+            <description>Used when progress bar is set to appear</description>
+        </property>
+        <property key="progressBarMessage" type="string" required="false" defaultValue="Working...">
+            <caption>Progress Bar Message</caption>
+            <category>Settings</category>
+            <description>Used when progress bar is set to appear</description>
+        </property>
+      </properties>
 </widget>

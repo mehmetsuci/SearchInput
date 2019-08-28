@@ -12,4 +12,4 @@ To trigger a microflow and use the input from the inputbox in your custom micrfl
 
 ## Update
 
-From version 2.0.0 the structure of the widget has changed. Therefore, updating the widget requires removing the old one and placing the new one on the page.
+From version 2.0.0 the structure of the widget has changed and it requires Mendix 7.13.1 or higher.
