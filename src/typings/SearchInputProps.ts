@@ -10,6 +10,5 @@ export interface SearchInputProps extends Widget {
   buttonIconClass: string;
   buttonstyle: React.CSSProperties;
   placeholder?: string;
-  handleKeywordChange: (e: string) => void;
   keyword: string;
 }

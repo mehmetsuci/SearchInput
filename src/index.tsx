@@ -1,9 +1,9 @@
 import './style/style.scss';
 
-import { Wrapper, WrapperProps } from './containers/Wrapper';
-
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { SearchInputProps } from './typings';
+import { Wrapper } from './containers/Wrapper';
 import _widgetBase from 'MxWidgetBase';
 import declare from 'dojoBaseDeclare';
 import { getValue } from './utils/mxHelpers';
@@ -52,16 +52,15 @@ export default declare(`${widgetName}.widget.${widgetName}`, [_widgetBase], {
     }
   },
   render(
-    params: any,
+    params: SearchInputProps,
     keyword: string,
     mxObject: mendix.lib.MxObject,
     parent: Element
   ) {
-    const props: WrapperProps = {
+    const props: SearchInputProps = {
       mxform: params.mxform,
       mxObject: mxObject,
-      className: params.class,
-      style: params.style,
+      style: params.style as string,
       targetAttribute: params.targetAttribute,
       mfToExecute: params.mfToExecute,
       mfToExecuteOnChange: params.mfToExecuteOnChange,
@@ -72,7 +71,6 @@ export default declare(`${widgetName}.widget.${widgetName}`, [_widgetBase], {
       buttonstyle: params.buttonstyle,
       placeholder: params.placeholder,
       keyword: keyword,
-      handleKeywordChange: () => {},
     };
     ReactDOM.render(<Wrapper {...props} />, parent);
   },

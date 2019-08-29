@@ -7,8 +7,12 @@ interface SearchInputSate {
   progressId: number | null;
 }
 
+interface ContainerProps extends SearchInputProps {
+  handleKeywordChange: (e: string) => void;
+}
+
 export class Container extends React.Component<
-  SearchInputProps,
+  ContainerProps,
   SearchInputSate
 > {
   state = { progressId: null };
