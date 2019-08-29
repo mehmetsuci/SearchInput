@@ -1,9 +1,10 @@
 # v2.0.0
 
-### Aug 19, 2019
+### Aug 29, 2019
 
 - React version
 - Preview in Design Mode & Studio
+- Compatible with latest versions of Mendix 7 and 8
 
 **Breaking change**: From version 2.0.0 the structure of the widget has changed and it requires Mendix 7.13.1 or higher.
 

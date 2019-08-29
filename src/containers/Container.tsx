@@ -50,8 +50,6 @@ export class Container extends React.Component<
 
   render() {
     const {
-      className,
-      style,
       buttonstyle,
       buttonIconClass,
       placeholder,
@@ -63,8 +61,6 @@ export class Container extends React.Component<
         run={this.run}
         change={this.change}
         handleInputChange={this.handleInputChange}
-        className={className}
-        style={style as React.CSSProperties}
         buttonstyle={buttonstyle}
         buttonIconClass={buttonIconClass}
         placeholder={placeholder}
