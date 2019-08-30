@@ -1,6 +1,6 @@
 import React from 'react';
-import SearchInputComponent from '../components/SearchInputComponent';
-import parseStyle from '../utils/parseStyle';
+import SearchInputComponent from '../SearchInputComponent';
+import parseStyle from '../../utils/parseStyle';
 import { render } from '@testing-library/react';
 
 describe('SearchInput Component Test Unit', () => {

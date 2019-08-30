@@ -34,3 +34,7 @@ export const getValue = (
     ? mxObject.get(attribute) || defaultValue
     : defaultValue;
 };
+
+export const showProgress = (progressBarMessage: string, isModal: boolean) => {
+  return mx.ui.showProgress(progressBarMessage, isModal);
+};

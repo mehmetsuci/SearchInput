@@ -1,7 +1,8 @@
+import { callMicroflowWithProgress, showProgress } from '../utils/mxHelpers';
+
 import React from 'react';
 import SearchInputComponent from '../components/SearchInputComponent';
-import { SearchInputProps } from '../typings';
-import { callMicroflowWithProgress } from '../utils/mxHelpers';
+import { SearchInputProps } from '../@typings';
 
 interface SearchInputSate {
   progressId: number | null;
@@ -17,13 +18,13 @@ export class Container extends React.Component<
 > {
   state = { progressId: null };
 
-  run = () => {
+  runSearch = () => {
     this.setState({ progressId: this.showProgress() }, () => {
       this.callMicroflow(this.props.mfToExecute, this.state.progressId);
     });
   };
 
-  change = () => {
+  changeSearch = () => {
     if (!!this.props.mfToExecuteOnChange) {
       this.setState({ progressId: this.showProgress() }, () => {
         this.callMicroflow(
@@ -37,14 +38,14 @@ export class Container extends React.Component<
   showProgress = () => {
     const { showProgressBar, progressBarMessage, isModal } = this.props;
     let progressId: number | null = null;
-    if (showProgressBar)
-      progressId = mx.ui.showProgress(progressBarMessage, isModal);
+    if (showProgressBar && progressBarMessage)
+      progressId = showProgress(progressBarMessage, isModal);
     return progressId;
   };
 
   callMicroflow = (mfName: string, progressId: number | null) => {
     const { targetAttribute, mxObject, mxform, keyword } = this.props;
-    mxObject.set(targetAttribute!, keyword);
+    mxObject.set(targetAttribute, keyword);
     callMicroflowWithProgress(mfName, mxObject, mxform, progressId);
   };
 
@@ -62,8 +63,8 @@ export class Container extends React.Component<
     } = this.props;
     return (
       <SearchInputComponent
-        run={this.run}
-        change={this.change}
+        run={this.runSearch}
+        change={this.changeSearch}
         handleInputChange={this.handleInputChange}
         buttonstyle={buttonstyle}
         buttonIconClass={buttonIconClass}

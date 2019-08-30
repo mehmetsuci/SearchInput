@@ -27,7 +27,7 @@ const SearchInputComponent = ({
   if (buttonIconClass) iconClass += ' glyphicon-' + buttonIconClass;
 
   return (
-    <div className="input-group">
+    <div className="input-group searchInput">
       <input
         type="text"
         className="form-control"

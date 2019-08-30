@@ -2,7 +2,7 @@ import '../style/style.scss';
 
 import { Container } from './Container';
 import React from 'react';
-import { SearchInputProps } from '../typings';
+import { SearchInputProps } from '../@typings';
 
 interface WrapperStates {
   keyword: string;

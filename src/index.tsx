@@ -2,7 +2,7 @@ import './style/style.scss';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { SearchInputProps } from './typings';
+import { SearchInputProps } from './@typings';
 import { Wrapper } from './containers/Wrapper';
 import _widgetBase from 'MxWidgetBase';
 import declare from 'dojoBaseDeclare';
@@ -31,7 +31,7 @@ export default declare(`${widgetName}.widget.${widgetName}`, [_widgetBase], {
       const commonOptions = {
         callback: function() {
           const keyword = getValue(
-            self.params.targetAttribute!,
+            self.params.targetAttribute,
             '',
             mxObject
           ) as string;
@@ -55,7 +55,7 @@ export default declare(`${widgetName}.widget.${widgetName}`, [_widgetBase], {
     params: SearchInputProps,
     keyword: string,
     mxObject: mendix.lib.MxObject,
-    parent: Element
+    parent: HTMLElement
   ) {
     const props: SearchInputProps = {
       mxform: params.mxform,
@@ -71,6 +71,7 @@ export default declare(`${widgetName}.widget.${widgetName}`, [_widgetBase], {
       buttonstyle: params.buttonstyle,
       placeholder: params.placeholder,
       keyword: keyword,
+      tabindex: parent.tabIndex,
     };
     ReactDOM.render(<Wrapper {...props} />, parent);
   },

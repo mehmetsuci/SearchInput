@@ -2,7 +2,7 @@
 
 exports[`SearchInput Component Test Unit should render correctly 1`] = `
 <div
-  class="input-group"
+  class="input-group searchInput"
 >
   <input
     class="form-control"

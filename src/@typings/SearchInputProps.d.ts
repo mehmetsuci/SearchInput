@@ -1,4 +1,4 @@
-import { Widget } from '../typings';
+import { Widget } from '.';
 
 export interface SearchInputProps extends Widget {
   targetAttribute: string;
