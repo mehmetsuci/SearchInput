@@ -2,27 +2,27 @@ import React from 'react';
 
 interface SearchInputComponentProps {
   handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  run: () => void;
-  change: () => void;
-  buttonstyle?: React.CSSProperties;
-  buttonIconClass?: string;
-  placeholder?: string;
-  tabindex?: number;
+  runSearch: () => void;
+  changeSearch: () => void;
+  buttonStyle: React.CSSProperties;
+  buttonIconClass: string;
+  placeholder: string;
+  tabIndex: number | undefined;
   keyword: string;
 }
 
 const SearchInputComponent = ({
   handleInputChange,
-  run,
-  change,
-  buttonstyle,
+  runSearch,
+  changeSearch,
+  buttonStyle,
   buttonIconClass,
   placeholder,
-  tabindex,
+  tabIndex,
   keyword,
 }: SearchInputComponentProps) => {
   let btnClass = 'btn';
-  if (buttonstyle) btnClass += ' btn-' + buttonstyle;
+  if (buttonStyle) btnClass += ' btn-' + buttonStyle;
   let iconClass = 'glyphicon';
   if (buttonIconClass) iconClass += ' glyphicon-' + buttonIconClass;
 
@@ -32,20 +32,20 @@ const SearchInputComponent = ({
         type="text"
         className="form-control"
         onChange={handleInputChange}
-        onBlur={change}
+        onBlur={changeSearch}
         onKeyDown={e => {
-          if (e.key === 'Enter') run();
+          if (e.key === 'Enter') runSearch();
         }}
         placeholder={placeholder}
-        tabIndex={tabindex}
+        tabIndex={tabIndex}
         value={keyword}
       />
       <span className="input-group-btn searchInputButton">
         <button
           className={btnClass}
-          onClick={run}
+          onClick={runSearch}
           type="button"
-          tabIndex={tabindex}
+          tabIndex={tabIndex}
         >
           <span className={iconClass}></span>
         </button>

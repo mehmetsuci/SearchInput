@@ -6,6 +6,7 @@ exports[`SearchInput Component Test Unit should render correctly 1`] = `
 >
   <input
     class="form-control"
+    placeholder=""
     tabindex="2"
     type="text"
     value="something"

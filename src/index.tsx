@@ -1,13 +1,14 @@
 import './style/style.scss';
 
+import declare from 'dojoBaseDeclare';
+import _widgetBase from 'MxWidgetBase';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { SearchInputProps } from './@typings';
-import { Wrapper } from './containers/Wrapper';
-import _widgetBase from 'MxWidgetBase';
-import declare from 'dojoBaseDeclare';
-import { getValue } from './utils/mxHelpers';
+
 import { widgetName } from '../package.json';
+import { SearchInputProps } from './@typings';
+import { Wrapper, WrapperProps } from './containers/Wrapper';
+import { getValue } from './utils/mxHelpers';
 
 export default declare(`${widgetName}.widget.${widgetName}`, [_widgetBase], {
   constructor() {
@@ -57,7 +58,7 @@ export default declare(`${widgetName}.widget.${widgetName}`, [_widgetBase], {
     mxObject: mendix.lib.MxObject,
     parent: HTMLElement
   ) {
-    const props: SearchInputProps = {
+    const props: WrapperProps = {
       mxform: params.mxform,
       mxObject: mxObject,
       style: params.style as string,
@@ -68,10 +69,10 @@ export default declare(`${widgetName}.widget.${widgetName}`, [_widgetBase], {
       progressBarMessage: params.progressBarMessage,
       isModal: params.isModal,
       buttonIconClass: params.buttonIconClass,
-      buttonstyle: params.buttonstyle,
+      buttonStyle: params.buttonstyle,
       placeholder: params.placeholder,
       keyword: keyword,
-      tabindex: parent.tabIndex,
+      tabIndex: parent.tabIndex,
     };
     ReactDOM.render(<Wrapper {...props} />, parent);
   },

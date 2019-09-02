@@ -1,20 +1,34 @@
 import '../style/style.scss';
 
-import { Container } from './Container';
 import React from 'react';
-import { SearchInputProps } from '../@typings';
+
+import { Widget } from '../@typings';
+import { Container } from './Container';
 
 interface WrapperStates {
   keyword: string;
 }
 
-export class Wrapper extends React.Component<SearchInputProps, WrapperStates> {
-  constructor(props: SearchInputProps) {
+export interface WrapperProps extends Widget {
+  targetAttribute: string;
+  mfToExecute: string;
+  mfToExecuteOnChange?: string;
+  showProgressBar: boolean;
+  progressBarMessage?: string;
+  isModal: boolean;
+  buttonIconClass: string;
+  buttonStyle: React.CSSProperties;
+  placeholder: string;
+  keyword: string;
+}
+
+export class Wrapper extends React.Component<WrapperProps, WrapperStates> {
+  constructor(props: WrapperProps) {
     super(props);
     this.state = { keyword: props.keyword };
   }
 
-  componentWillReceiveProps(newProps: SearchInputProps) {
+  componentWillReceiveProps(newProps: WrapperProps) {
     if (newProps.keyword !== this.state.keyword) {
       this.setState({ keyword: newProps.keyword });
     }

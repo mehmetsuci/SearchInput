@@ -1,77 +1,93 @@
+import React from 'react';
+
+import { Widget } from '../@typings';
+import SearchInputComponent from '../components/SearchInputComponent';
 import { callMicroflowWithProgress, showProgress } from '../utils/mxHelpers';
 
-import React from 'react';
-import SearchInputComponent from '../components/SearchInputComponent';
-import { SearchInputProps } from '../@typings';
-
-interface SearchInputSate {
-  progressId: number | null;
-}
-
-interface ContainerProps extends SearchInputProps {
+interface ContainerProps extends Widget {
   handleKeywordChange: (e: string) => void;
+  targetAttribute: string;
+  mfToExecute: string;
+  mfToExecuteOnChange?: string;
+  showProgressBar: boolean;
+  progressBarMessage?: string;
+  isModal: boolean;
+  buttonIconClass: string;
+  buttonStyle: React.CSSProperties;
+  placeholder: string;
+  keyword: string;
 }
 
-export class Container extends React.Component<
-  ContainerProps,
-  SearchInputSate
-> {
-  state = { progressId: null };
-
-  runSearch = () => {
-    this.setState({ progressId: this.showProgress() }, () => {
-      this.callMicroflow(this.props.mfToExecute, this.state.progressId);
-    });
-  };
-
-  changeSearch = () => {
-    if (!!this.props.mfToExecuteOnChange) {
-      this.setState({ progressId: this.showProgress() }, () => {
-        this.callMicroflow(
-          this.props.mfToExecuteOnChange!,
-          this.state.progressId
-        );
-      });
-    }
-  };
-
-  showProgress = () => {
-    const { showProgressBar, progressBarMessage, isModal } = this.props;
-    let progressId: number | null = null;
-    if (showProgressBar && progressBarMessage)
-      progressId = showProgress(progressBarMessage, isModal);
-    return progressId;
-  };
-
-  callMicroflow = (mfName: string, progressId: number | null) => {
-    const { targetAttribute, mxObject, mxform, keyword } = this.props;
-    mxObject.set(targetAttribute, keyword);
-    callMicroflowWithProgress(mfName, mxObject, mxform, progressId);
-  };
-
-  handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    this.props.handleKeywordChange(e.target.value);
-  };
-
-  render() {
-    const {
-      buttonstyle,
-      buttonIconClass,
-      placeholder,
-      tabindex,
-      keyword,
-    } = this.props;
-    return (
-      <SearchInputComponent
-        run={this.runSearch}
-        change={this.changeSearch}
-        handleInputChange={this.handleInputChange}
-        buttonstyle={buttonstyle}
-        buttonIconClass={buttonIconClass}
-        placeholder={placeholder}
-        tabindex={tabindex}
-        keyword={keyword}
-      />
-    );
+const callMicroflow = (
+  targetAttribute: string,
+  mfName: string,
+  keyword: string,
+  mxform: mxui.lib.form._FormBase,
+  mxObject: mendix.lib.MxObject,
+  progressObject: {
+    showProgressBar: boolean;
+    progressBarMessage: string | undefined;
+    isModal: boolean;
   }
-}
+) => {
+  let progressId: number | null = null;
+  if (progressObject.showProgressBar && progressObject.progressBarMessage)
+    progressId = showProgress(
+      progressObject.progressBarMessage,
+      progressObject.isModal
+    );
+  mxObject.set(targetAttribute, keyword);
+  callMicroflowWithProgress(mfName, mxObject, mxform, progressId);
+};
+
+export const Container = ({
+  handleKeywordChange,
+  targetAttribute,
+  mfToExecute,
+  mfToExecuteOnChange,
+  showProgressBar,
+  progressBarMessage,
+  isModal,
+  buttonStyle,
+  buttonIconClass,
+  placeholder,
+  tabIndex,
+  keyword,
+  mxform,
+  mxObject,
+}: ContainerProps) => {
+  return (
+    <SearchInputComponent
+      runSearch={() => {
+        callMicroflow(targetAttribute, mfToExecute, keyword, mxform, mxObject, {
+          showProgressBar,
+          progressBarMessage,
+          isModal,
+        });
+      }}
+      changeSearch={() => {
+        if (!mfToExecuteOnChange) return;
+        callMicroflow(
+          targetAttribute,
+          mfToExecuteOnChange,
+          keyword,
+          mxform,
+          mxObject,
+          {
+            showProgressBar,
+            progressBarMessage,
+            isModal,
+          }
+        );
+      }}
+      handleInputChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+        handleKeywordChange(e.target.value);
+      }}
+      buttonStyle={buttonStyle}
+      buttonIconClass={buttonIconClass}
+      placeholder={placeholder}
+      tabIndex={tabIndex}
+      keyword={keyword}
+    />
+  );
+};

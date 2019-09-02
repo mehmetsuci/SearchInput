@@ -92,10 +92,5 @@
     "test:watch": "jest --watchAll",
     "test:coverage": "jest --verbose --coverage",
     "zip": "node ./generateMpkFile.js"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
   }
 }

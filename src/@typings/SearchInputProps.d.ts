@@ -9,6 +9,6 @@ export interface SearchInputProps extends Widget {
   isModal: boolean;
   buttonIconClass: string;
   buttonstyle: React.CSSProperties;
-  placeholder?: string;
+  placeholder: string;
   keyword: string;
 }

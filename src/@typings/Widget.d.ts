@@ -3,5 +3,5 @@ export interface Widget {
   mxObject: mendix.lib.MxObject;
   style?: React.CSSProperties | string;
   className?: string;
-  tabindex?: number;
+  tabIndex: number | undefined;
 }

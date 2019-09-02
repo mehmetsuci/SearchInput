@@ -1,20 +1,24 @@
-import React from 'react';
-import SearchInputComponent from '../SearchInputComponent';
-import parseStyle from '../../utils/parseStyle';
 import { render } from '@testing-library/react';
+import React from 'react';
+
+import parseStyle from '../../utils/parseStyle';
+import SearchInputComponent from '../SearchInputComponent';
 
 describe('SearchInput Component Test Unit', () => {
   it('should render correctly', () => {
     const props = {
       keyword: 'something',
-      run: () => {},
-      change: () => {},
+      runSearch: () => {},
+      changeSearch: () => {},
       handleInputChange: () => {},
       className: 'awsomeClass',
-      tabindex: 2,
+      tabIndex: 2,
       style: parseStyle(
         'border-style:solid;border-color:#39c;border-width:5px;'
       ),
+      buttonStyle: undefined,
+      buttonIconClass: '',
+      placeholder: '',
     };
 
     const { container } = render(<SearchInputComponent {...props} />);
