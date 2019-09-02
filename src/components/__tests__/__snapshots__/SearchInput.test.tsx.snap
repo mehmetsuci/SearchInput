@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchInput Component Test Unit should render correctly 1`] = `
+<div
+  class="input-group searchInput"
+>
+  <input
+    class="form-control"
+    placeholder=""
+    tabindex="2"
+    type="text"
+    value="something"
+  />
+  <span
+    class="input-group-btn searchInputButton"
+  >
+    <button
+      class="btn"
+      tabindex="2"
+      type="button"
+    >
+      <span
+        class="glyphicon"
+      />
+    </button>
+  </span>
+</div>
+`;
