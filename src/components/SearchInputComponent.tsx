@@ -21,11 +21,10 @@ const SearchInputComponent = ({
   tabIndex,
   keyword,
 }: SearchInputComponentProps) => {
-  let btnClass = 'btn';
-  if (buttonStyle) btnClass += ' btn-' + buttonStyle;
-  let iconClass = 'glyphicon';
-  if (buttonIconClass) iconClass += ' glyphicon-' + buttonIconClass;
-
+  const btnClass = `btn${buttonStyle ? ' btn-' + buttonStyle : ''}`;
+  const btnIconClass = `glyphicon${
+    buttonIconClass ? ' glyphicon-' + buttonIconClass : ''
+  }`;
   return (
     <div className="input-group searchInput">
       <input
@@ -47,7 +46,7 @@ const SearchInputComponent = ({
           type="button"
           tabIndex={tabIndex}
         >
-          <span className={iconClass}></span>
+          <span className={btnIconClass}></span>
         </button>
       </span>
     </div>

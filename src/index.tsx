@@ -7,7 +7,7 @@ import ReactDOM from 'react-dom';
 
 import { widgetName } from '../package.json';
 import { SearchInputProps } from './@typings';
-import { Wrapper, WrapperProps } from './containers/Wrapper';
+import { Container, ContainerProps } from './containers/Container';
 import { getValue } from './utils/mxHelpers';
 
 export default declare(`${widgetName}.widget.${widgetName}`, [_widgetBase], {
@@ -58,7 +58,7 @@ export default declare(`${widgetName}.widget.${widgetName}`, [_widgetBase], {
     mxObject: mendix.lib.MxObject,
     parent: HTMLElement
   ) {
-    const props: WrapperProps = {
+    const props: ContainerProps = {
       mxform: params.mxform,
       mxObject: mxObject,
       style: params.style as string,
@@ -73,7 +73,10 @@ export default declare(`${widgetName}.widget.${widgetName}`, [_widgetBase], {
       placeholder: params.placeholder,
       keyword: keyword,
       tabIndex: parent.tabIndex,
+      handleKeywordChange: (newKeyword: string) => {
+        this.render(params, newKeyword, mxObject, parent);
+      },
     };
-    ReactDOM.render(<Wrapper {...props} />, parent);
+    ReactDOM.render(<Container {...props} />, parent);
   },
 });

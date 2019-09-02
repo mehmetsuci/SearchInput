@@ -4,7 +4,7 @@ import { Widget } from '../@typings';
 import SearchInputComponent from '../components/SearchInputComponent';
 import { callMicroflowWithProgress, showProgress } from '../utils/mxHelpers';
 
-interface ContainerProps extends Widget {
+export interface ContainerProps extends Widget {
   handleKeywordChange: (e: string) => void;
   targetAttribute: string;
   mfToExecute: string;
