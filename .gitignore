@@ -1,10 +1,9 @@
 
 node_modules/
 build/
-dist/
-reports/
 coverage/
+reports/
+test/
 yarn-error.log
-
 dev.config.local.js
-    
+
