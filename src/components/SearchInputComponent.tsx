@@ -1,10 +1,11 @@
+import classNames from 'classnames';
 import React from 'react';
 
 interface SearchInputComponentProps {
   handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   runSearch: () => void;
   changeSearch: () => void;
-  buttonStyle: React.CSSProperties;
+  buttonStyle: BootstrapStyle;
   buttonIconClass: string;
   placeholder: string;
   tabIndex: number | undefined;
@@ -21,10 +22,13 @@ const SearchInputComponent = ({
   tabIndex,
   keyword,
 }: SearchInputComponentProps) => {
-  const btnClass = `btn${buttonStyle ? ' btn-' + buttonStyle : ''}`;
-  const btnIconClass = `glyphicon${
-    buttonIconClass ? ' glyphicon-' + buttonIconClass : ''
-  }`;
+  const btnClass = classNames('btn', {
+    [`btn-${buttonStyle}`]: !!buttonStyle,
+  });
+  const btnIconClass = classNames('glyphicon', {
+    [`glyphicon-${buttonIconClass}`]: !!buttonIconClass,
+  });
+
   return (
     <div className="input-group searchInput">
       <input

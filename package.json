@@ -17,10 +17,7 @@
     "Input-Search",
     "Search"
   ],
-  "author": {
-    "name": "Meisam Mahdian",
-    "email": "meisam.mahdian@mendix.com"
-  },
+  "author": "Jelte Lagendijk, Meisam Mahdian",
   "license": "Apache License 2.0",
   "dependencies": {},
   "devDependencies": {
@@ -34,7 +31,7 @@
     "@babel/preset-typescript": "^7.3.3",
     "@babel/runtime": "^7.5.5",
     "@researchgate/babel-plugin-transform-scss-import-to-string": "^0.1.3",
-    "@types/react-test-renderer": "16.9.0",
+    "@types/react-test-renderer": "16.8.0",
     "@testing-library/jest-dom": "^4.0.0",
     "@testing-library/react": "^8.0.1",
     "@types/classnames": "^2.2.8",
@@ -48,6 +45,7 @@
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.8.0",
     "babel-loader": "^8.0.5",
+    "classnames": "2.2.6",
     "clean-webpack-plugin": "^2.0.1",
     "cross-env": "^5.2.0",
     "css-loader": "^2.1.1",
@@ -69,7 +67,7 @@
     "pretty-quick": "^1.11.1",
     "react": "16.6.3",
     "react-dom": "16.6.3",
-    "react-test-renderer": "16.9.0",
+    "react-test-renderer": "16.6.3",
     "sass-loader": "^7.1.0",
     "stylelint": "^10.1.0",
     "stylelint-config-prettier": "^5.2.0",
