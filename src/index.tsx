@@ -61,7 +61,6 @@ export default declare(`${widgetName}.widget.${widgetName}`, [_widgetBase], {
     const props: ContainerProps = {
       mxform: params.mxform,
       mxObject: mxObject,
-      style: params.style as string,
       targetAttribute: params.targetAttribute,
       mfToExecute: params.mfToExecute,
       mfToExecuteOnChange: params.mfToExecuteOnChange,

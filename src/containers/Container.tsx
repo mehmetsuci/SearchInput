@@ -13,7 +13,7 @@ export interface ContainerProps extends Widget {
   progressBarMessage?: string;
   isModal: boolean;
   buttonIconClass: string;
-  buttonStyle: React.CSSProperties;
+  buttonStyle: BootstrapStyle;
   placeholder: string;
   keyword: string;
 }

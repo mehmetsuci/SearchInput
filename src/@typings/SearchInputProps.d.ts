@@ -8,7 +8,7 @@ export interface SearchInputProps extends Widget {
   progressBarMessage?: string;
   isModal: boolean;
   buttonIconClass: string;
-  buttonstyle: React.CSSProperties;
+  buttonstyle: BootstrapStyle;
   placeholder: string;
   keyword: string;
 }

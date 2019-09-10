@@ -1,8 +1,6 @@
 import React from 'react';
-
 import SearchInputComponent from './components/SearchInputComponent';
 import styleAsString from './style/style.scss';
-import parseStyle from './utils/parseStyle';
 
 interface PreviewProps {
   style: string;
@@ -25,7 +23,6 @@ export const preview = ({
     tabIndex: props.tabIndex,
     keyword: '',
     className: className,
-    style: parseStyle(style),
   };
 
   return <SearchInputComponent {...nextProps} />;
